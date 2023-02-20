@@ -64,14 +64,26 @@ def is_url_valid(url: str):
 def env_check(args):
     username = args.username
     password = args.password
+    host = args.host_name
+
+    # check host
+    if host is None:
+        logging.info("host is None")
+    pass
+
+    if '.' not in host:
+        logging.error(f"host not valid: {host}")
+        exit(-1)
+    pass
 
     # allow this situation
     if username is None or password is None:
-        logging.debug(f"username = {username}, password = {password}")
+        logging.info(f"username = {username}, password = {password}")
         return
+    pass
 
     if len(username) == 0 or len(password) == 0:
-        logging.error(f"username or password is empty")
+        logging.error("username or password is empty")
         exit(-1)
     pass
 
