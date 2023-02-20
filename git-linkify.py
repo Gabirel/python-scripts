@@ -150,8 +150,19 @@ def main():
 """
 convert ssh-style git string into http-style link
 
-Usage:
-    python3 git-linkify.py --log-level=debug git-url
+usage: git-linkify.py [-h] [--username USERNAME] [--password PASSWORD] [--host-name HOST_NAME] [--log-level {debug,info,warning,error}] url
+
+positional arguments:
+  url                   ssh-style git url. Example: git@github.com:abc/abc.git
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --username USERNAME   username for authentication
+  --password PASSWORD   password for authentication
+  --host-name HOST_NAME
+                        actual host name
+  --log-level {debug,info,warning,error}
+                        choose a logging level. Default: warning
 """
 if __name__ == '__main__':
     main()
