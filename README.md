@@ -1,6 +1,6 @@
-# python-project-template
+# python-scripts
 
-Template for creating python project with one-click action
+Some useful scripts to use dailyot
 
 # Feature List
 
