@@ -4,10 +4,46 @@ Template for creating python project with one-click action
 
 # Feature List
 
-- Argument parser: no need to write them by yourself
-- Logging: "warning" by default and customizable output
-- Module: write your code inside your `execute()` to keep isolated with main module
+- git-linkify: convert ssh-style to http-style
+- clone: convert ssh-style to http-style, then clone it
 
 # Usage
 
-Click "Use this template", and you are done!
+## git-linkify
+
+```shell
+$ ./git-linkify.py --help                                                                             21:07:07
+usage: git-linkify.py [-h] [--username USERNAME] [--password PASSWORD] [--host-name HOST_NAME] [--log-level {debug,info,warning,error}] url
+
+positional arguments:
+  url                   ssh-style git url. Example: git@github.com:abc/abc.git
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --username USERNAME   username for authentication
+  --password PASSWORD   password for authentication
+  --host-name HOST_NAME
+                        actual host name
+  --log-level {debug,info,warning,error}
+                        choose a logging level. Default: warning
+```
+
+
+## clone
+
+```shell
+$ ./clone.py --help                                                                             21:07:07
+usage: clone.py [-h] [--username USERNAME] [--password PASSWORD] [--host-name HOST_NAME] [--log-level {debug,info,warning,error}] url
+
+positional arguments:
+  url                   ssh-style git url. Example: git@github.com:abc/abc.git
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --username USERNAME   username for authentication
+  --password PASSWORD   password for authentication
+  --host-name HOST_NAME
+                        actual host name
+  --log-level {debug,info,warning,error}
+                        choose a logging level. Default: warning
+```
