@@ -124,16 +124,26 @@ def convert(url: str, args) -> str:
     return new
 
 
-def cmd_exec(cmd: str) -> (int, str):
+def cmd_exec(cmd: str, cwd=None, restore_index_list=None, old_char='__', new_char=' ') -> (int, str):
     """
     execute cmd from input
+    Default split character => '__' (`old_char` will be replaced by `new_char`)
 
     Usage:
-    status, msg = cmd("ls -l")
+    status, msg = cmd('ls -l --commands="mvn__clean__install"', cwd='/tmp', restore_index_list=[2])
     msg = msg.decode()
     """
     c = cmd.split(' ')
-    result = subprocess.run(c, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+    # repair partial commands
+    if restore_index_list is not None:
+        for i in restore_index_list:
+            c[i] = c[i].replace(old_char, new_char)
+        pass
+    pass
+
+    # execute
+    result = subprocess.run(c, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=cwd)
     return result.returncode, result.stdout
 
 
