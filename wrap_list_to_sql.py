@@ -70,8 +70,10 @@ def execute(args):
         lines = f.read().split()
     pass
 
-    format_lines = ["'{}'{}".format(line, ',' if index < len(lines) - 1 else '') for index, line in
-                    enumerate(lines)]
+    split_char = args.char
+    # convert: abc -> `<char>`abc`<char>`,
+    format_lines = ["{}{}{}{}".format(split_char, line, split_char, ',' if index < len(lines) - 1 else '') for
+                    index, line in enumerate(lines)]
     # print
     for i in format_lines:
         print(i, end='')
